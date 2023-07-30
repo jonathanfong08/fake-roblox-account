@@ -3,6 +3,7 @@ import discord
 from discord_webhook import DiscordWebhook, DiscordEmbed
 import json
 import requests
+from colorama import Fore, Back, Style
 from discord.ext import commands
 import os
 
@@ -27,6 +28,9 @@ raw_password = ""
 
 everything = upper_ch + digits
 
+def clear(): #clears terminal
+    os.system('cls')
+
 # Load the webhook URL from the config.json file
 with open('config.json') as config_file:
     config = json.load(config_file)
@@ -46,6 +50,13 @@ def webhook_send():
     webhook.add_embed(embed)
     response = webhook.execute()
 
+@client.event
+async def on_ready():
+    clear()
+    print(Fore.LIGHTGREEN_EX + "BOT IS UP AND RUNNING. GET READY TO SCAM KIDS AND MAKE HELLA MONEY! >:)")
+    print("------------------------------------------------------------------------------------")
+    print(Style.RESET_ALL) #resets so no more color
+
 
 @client.command()
 async def gen_cookie(ctx):
@@ -61,7 +72,8 @@ async def gen_cookie(ctx):
     cookie_length = 744
     global cookie
     cookie = "".join(random.choices(everything, k=cookie_length))
-    print("_|WARNING:-DO-NOT-SHARE-THIS.--Sharing-this-will-allow-someone-to-log-in-as-you-and-to-steal-your-ROBUX-and-items.|_" + cookie)
+    print(Fore.GREEN + "Cookie has been generated.")
+    print(Style.RESET_ALL) #resets so no more color
     
     embed = discord.Embed(title="ACCOUNT", description="Here is your requested Roblox account:")
     embed.add_field(name="Email:", value=raw_email, inline=False)
