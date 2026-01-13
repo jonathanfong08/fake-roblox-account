@@ -53,7 +53,7 @@ def webhook_send():
 @client.event
 async def on_ready():
     clear()
-    print(Fore.LIGHTGREEN_EX + "BOT IS UP AND RUNNING. GET READY TO SCAM KIDS AND MAKE HELLA MONEY! >:)")
+    print(Fore.LIGHTGREEN_EX + "BOT IS UP AND RUNNING.")
     print("------------------------------------------------------------------------------------")
     print(Style.RESET_ALL) #resets so no more color
 
@@ -83,3 +83,4 @@ async def gen_cookie(ctx):
     webhook_send()
 
 client.run(bot_token)
+
